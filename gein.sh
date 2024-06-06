@@ -185,7 +185,7 @@ gein_bootstrap() {
     local stage3_target="$stage3_src/latest-stage3-amd64-openrc.txt"
 
     log "Determining the latest Stage3 version..."
-    local stage3_path="$(curl -sf $stage3_target | awk 'END{print $1}')"
+    local stage3_path="$(curl -sf $stage3_target | grep '.tar' | awk '{print $1}')"
     local stage3_file="$(echo $stage3_path | awk -F[/' '] '{print $2}')"
     local stage3_url="$stage3_src/$stage3_path"
 
